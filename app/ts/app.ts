@@ -4,5 +4,4 @@ console.log(negociacaoTeste.quantidade) */
 
 const controller = new NegociacaoController();
 document
-    .querySelector('.form')
-    .addEventListener('submit',controller.adicionaNegociacao.bind(controller));
+    $('.form').submit(controller.adicionaNegociacao.bind(controller));

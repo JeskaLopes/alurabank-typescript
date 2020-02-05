@@ -1,4 +1,3 @@
-//usando a herança do componente View através do extends
 class NegociacoesView extends View {
     template(model) {
         return `

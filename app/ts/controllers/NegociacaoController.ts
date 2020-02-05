@@ -1,8 +1,9 @@
 class NegociacaoController{
     
-    private _inputQuantidade :HTMLInputElement;
-    private _inputData :HTMLInputElement;
-    private _inputValor :HTMLInputElement;
+    /* ANTERIORMENTE ANTES DO JQUERY private _inputQuantidade :HTMLInputElement; */
+    private _inputQuantidade :JQuery;
+    private _inputData :JQuery;
+    private _inputValor :JQuery;
     private _negociacoes:Negociacoes = new Negociacoes()
     private _negociacoesView = new NegociacoesView('#negociacoesView');
     private _MensagemNegociacao =  new MensagemNegociacao('#mensagemView')
@@ -10,9 +11,10 @@ class NegociacaoController{
     constructor(){
 
         //abertura e fechamento das tags significa casting, quando eu converto um tipo mais genérico para um tipo mais especifico, nesse caso de Element para HTMLInputElement
-        this._inputQuantidade = <HTMLInputElement> document.querySelector('#quantidade')
-        this._inputData = <HTMLInputElement> document.querySelector('#data')
-        this._inputValor = <HTMLInputElement> document.querySelector('#valor')
+        // anteriormente antes do jquery this._inputQuantidade = <HTMLInputElement> document.querySelector('#quantidade')
+        this._inputQuantidade = $('#quantidade')
+        this._inputData = $('#data')
+        this._inputValor = $('#valor')
          // atualiza a view para exibir os dados do modelo, vazio
         this._negociacoesView.update(this._negociacoes);
     }
@@ -21,9 +23,9 @@ class NegociacaoController{
         e.preventDefault();
 
         const negociacao = new Negociacao(
-            parseInt(this._inputQuantidade.value),
-            new Date(this._inputData.value.replace(/-/g, ',')),
-            parseFloat(this._inputValor.value)
+            parseInt(this._inputQuantidade.val()),
+            new Date(this._inputData.val().replace(/-/g, ',')),
+            parseFloat(this._inputValor.val())
         );
 
         this._negociacoes.novaNegociacao(negociacao)
